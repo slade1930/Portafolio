@@ -1,0 +1,25 @@
+export const siteConfig = {
+  name: "Flinn Nieto",
+  role: "Full Stack Developer",
+  handle: "flinn-nieto",
+  url: "https://flinnnieto.dev",
+  description:
+    "Full Stack Developer especializado en aplicaciones web modernas, APIs escalables e inteligencia artificial. React, Next.js, FastAPI, Django, Node.js y PostgreSQL.",
+  email: "sladenieto@gmail.com",
+  phone: "+507 6798-7745",
+  location: "Panamá, Panamá",
+  github: "https://github.com/slade1930",
+  githubUser: "slade1930",
+  linkedin: "https://linkedin.com/in/flinn-nieto",
+  whatsapp: "https://wa.me/50767987745",
+  cvFile: "/cv-flinn-nieto.pdf",
+  nav: [
+    { label: "Inicio", href: "#inicio" },
+    { label: "Sobre mí", href: "#sobre-mi" },
+    { label: "Skills", href: "#skills" },
+    { label: "Proyectos", href: "#proyectos" },
+    { label: "Experiencia", href: "#experiencia" },
+    { label: "GitHub", href: "#github" },
+    { label: "Contacto", href: "#contacto" },
+  ],
+};
