@@ -28,6 +28,63 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "smartbank",
+    name: "SmartBank Core",
+    repo: "https://github.com/slade1930/ETE-",
+    year: 2026,
+    status: "Demo",
+    category: "Fintech / Banca",
+    tagline: "Banca digital full stack: cuentas, transferencias, tarjetas y auditoría",
+    description:
+      "Plataforma bancaria digital completa construida como un monolith modular: autenticación JWT con roles, cuentas de ahorro y corriente con números verificados por Luhn, transferencias transaccionales con lock pesimista e idempotencia, tarjetas, notificaciones, auditoría y dashboards separados para cliente y administrador. Interfaz React con tema oscuro/claro y paleta corporativa azul.",
+    problem:
+      "Construir un core bancario que combine la robustez del backend (consistencia transaccional, auditoría, control de riesgo) con una experiencia de cliente moderna. El reto no era solo acumular features, sino mantener la seguridad y la integridad financiera en cada operación: transferencias que no se dupliquen, saldos consistentes y trazabilidad completa.",
+    architecture:
+      "Monolith modular en Java 21 + Spring Boot 3.5 con módulos por dominio (auth, customer, account, transaction, transfer, card, notification, audit, fraud, dashboard). Las transferencias se ejecutan con @Transactional, lock pesimista sobre cuentas e idempotencia para evitar duplicados. Persistencia en PostgreSQL 16 con Flyway para migraciones (schema + seed de dev). Seguridad con Spring Security + JWT (jjwt), BCrypt y roles CUSTOMER/ADMIN. Facecla un detector de fraude tras un interfaz (FraudDetectorService), hoy NoOp y preparado para Ollama. El frontend es Next.js 14 + React 18 + TypeScript con TanStack Query, zustand, Recharts para gráficas y Tailwind + shadcn/ui, con un sistema de diseño en paleta azul.",
+    features: [
+      "Autenticación JWT con registro, login y roles (cliente/administrador) con BCrypt",
+      "Cuentas de ahorro y corriente con número de cuenta con dígito verificador Luhn",
+      "Transferencias transaccionales con bloqueo pesimista, idempotencia y rollback",
+      "Tarjetas y notificaciones vinculadas a la actividad del cliente",
+      "Auditoría completa (AuditLog) y hook de detección de fraude extensible",
+      "Dashboard de cliente: balance total, cuentas, movimientos y acciones de depósito/retiro",
+      "Panel de administración: métricas globales, clientes, transferencias y auditoría",
+      "UI React senior con tema oscuro/claro y paleta corporativa azul",
+    ],
+    tech: [
+      "Java 21",
+      "Spring Boot 3.5",
+      "PostgreSQL 16",
+      "Flyway",
+      "Spring Security",
+      "JWT",
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "TanStack Query",
+      "zustand",
+      "Recharts",
+      "Docker",
+    ],
+    challenges: [
+      "Garantizar consistencia y evitar duplicados en transferencias concurrentes (lock pesimista + idempotencia)",
+      "Diseñar la detección de fraude como un sistema sustituible por un LLM (Ollama) sin tocar el dominio",
+      "Organizar un monolith modular con claridad de responsabilidades y pruebas de integración (Testcontainers)",
+    ],
+    learnings: [
+      "Reforcé el modelado de transacciones financieras concurrentes (bloqueo pesimista, idempotencia, rollback), integré seguridad de punta a punta (JWT + roles + BCrypt) y aprendí a estructurar un monolith modular en un core bancario manteniendo trazabilidad y auditoría en cada operación.",
+    ],
+    images: [
+      "/projects/smartbank-core-1.png",
+      "/projects/smartbank-core-2.png",
+      "/projects/smartbank-core-3.png",
+    ],
+    accent: "from-blue-500 via-sky-500 to-indigo-600",
+    icon: "Landmark",
+  },
+  {
     slug: "slax",
     name: "SLAX",
     repo: "https://github.com/slade1930/slax-",
