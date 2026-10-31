@@ -55,6 +55,6 @@ export const timeline: { year: string; title: string; description: string }[] = 
     year: "2026",
     title: "IA aplicada y productos",
     description:
-      "Slazx (RAG con Ollama), IMA en producción y sistemas empresariales en monorepo.",
+      "Slazx (RAG con Ollama), ITAS en producción y sistemas empresariales en monorepo.",
   },
 ];
