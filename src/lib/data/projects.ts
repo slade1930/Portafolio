@@ -28,6 +28,63 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "resazon-loop",
+    name: "ReSazón Loop",
+    repo: "https://github.com/slade1930/Resazon",
+    live: "https://resazon.vercel.app",
+    year: 2026,
+    status: "Producción",
+    category: "IA / Gastronomía",
+    tagline: "Convierte lo que tienes en la cocina en recetas panameñas, con visión e IA",
+    description:
+      "Aplicación web panameña que convierte lo que hay en tu despensa en recetas reales: escanea una foto de tus ingredientes, busca platos tradicionales por lo que tienes o genera una receta original con IA. Todo sobre un recetario panameño ingestado en un RAG con búsqueda semántica por embeddings, y una identidad visual cálida inspirada en el culantro, el maíz y el ají. Lema: «Menos desperdicio. Más sazón.».",
+    problem:
+      "El desperdicio de comida en casa casi siempre empieza con la misma pregunta: «tengo estos ingredientes, ¿qué cocino?». Las apps de recetas asumen que el usuario ya sabe qué quiere y lo obligan a buscar por nombre de plato, no por lo que realmente tiene en la nevera. ReSazón Loop invierte el flujo: parte de los ingredientes reales (detectados de una foto), los cruza contra un recetario panameño y devuelve platos que se pueden cocinar hoy, sin comprar nada extra.",
+    architecture:
+      "Monolito modular en FastAPI con capas estrictas: routers finos en api/v1, casos de uso en services, acceso a datos aislado en repositories (SQLAlchemy async, 12 tablas) y contratos Pydantic en schemas. La visión usa Gemini Vision para detectar ingredientes en la imagen y un normalizador que los mapea al catálogo real antes de confirmarlos. La generación y los embeddings van por un cliente Gemini único con prompts versionados y parser de salida. El RAG ingesta el recetario «Nuestro Sabor Panamá», genera embeddings y los guarda en PostgreSQL con pgvector; el retriever alimenta la lógica pura de recipes (matcher, ranker, assembler). La nutrición se estima con heurísticas. El frontend es React 18 + Vite 6 + Tailwind 4 con Radix, y el despliegue separa Vite en Vercel y FastAPI en Render con PostgreSQL + pgvector.",
+    features: [
+      "Escaneo de despensa: sube una foto y Gemini Vision detecta los ingredientes",
+      "Normalización y confirmación editable de la lista detectada antes de buscar",
+      "Búsqueda de recetas panameñas por los ingredientes que ya tienes",
+      "Generación de recetas originales con IA cuando ningún plato del recetario encaja",
+      "RAG sobre el recetario «Nuestro Sabor Panamá» con búsqueda semántica por embeddings (pgvector)",
+      "Ranking de recetas por cobertura de ingredientes y ajuste de porciones",
+      "Estimación heurística de macros y valores nutricionales por receta",
+      "Identidad visual panameña (culantro, maíz, ají) con tipografías Fraunces, Inter y Caveat",
+    ],
+    tech: [
+      "Python 3.12",
+      "FastAPI",
+      "SQLAlchemy 2 (async)",
+      "PostgreSQL 16",
+      "pgvector",
+      "Alembic",
+      "Gemini Vision",
+      "Gemini Embeddings",
+      "RAG",
+      "Pydantic v2",
+      "React 18",
+      "Vite 6",
+      "TypeScript",
+      "Tailwind CSS 4",
+      "Radix UI",
+      "Vercel",
+      "Render",
+    ],
+    challenges: [
+      "Normalizar ingredientes detectados por visión (lenguaje libre, plurales, regionalismos) contra un catálogo cerrado antes de consultar el recetario",
+      "Diseñar el RAG para que las recetas recuperadas sean cocinables de verdad: matcher por cobertura, no solo similitud semántica",
+      "Mantener la API key de Gemini exclusivamente en el backend y validar MIME y tamaño de imagen antes de tocar cualquier servicio",
+      "Separar lógica pura de recetas (matcher, ranker, assembler) de la infraestructura para poder probarla sin IA ni base de datos",
+    ],
+    learnings: [
+      "Aprendí a integrar visión, generación y embeddings de un mismo proveedor detrás de una capa de IA única con prompts versionados, y a construir un RAG útil para un dominio concreto (recetas) donde la recuperación semántica sola no basta: hay que rankear por lo que el usuario realmente puede cocinar. También reforcé el diseño por capas y la validación de entradas no confiables (imágenes) en el backend.",
+    ],
+    images: ["/projects/resazon-1.png", "/projects/resazon-2.png"],
+    accent: "from-emerald-500 via-lime-500 to-amber-500",
+    icon: "ChefHat",
+  },
+  {
     slug: "smartbank",
     name: "SmartBank Core",
     repo: "https://github.com/slade1930/ETE-",
